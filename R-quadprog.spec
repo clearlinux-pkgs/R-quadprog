@@ -4,7 +4,7 @@
 #
 Name     : R-quadprog
 Version  : 1.5.5
-Release  : 10
+Release  : 11
 URL      : https://cran.r-project.org/src/contrib/quadprog_1.5-5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/quadprog_1.5-5.tar.gz
 Summary  : Functions to solve Quadratic Programming Problems.
@@ -14,10 +14,7 @@ Requires: R-quadprog-lib
 BuildRequires : clr-R-helpers
 
 %description
-This is an R port of the quadprog package version 1.2 of
-Berwin A. Turlach <berwin.turlach@anu.edu.au> which can be found
-at http://wilton.anu.edu.au/%7Eberwin/software/quadprog.html. An older
-version can also be found in the statlib archive.
+solving quadratic programming problems.
 
 %package lib
 Summary: lib components for the R-quadprog package.
@@ -35,11 +32,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1496610814
+export SOURCE_DATE_EPOCH=1502414464
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1496610814
+export SOURCE_DATE_EPOCH=1502414464
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -57,11 +54,6 @@ echo "FFLAGS = $FFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 echo "CXXFLAGS = $CXXFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library quadprog
 for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx2 ; mv $i.avx2 ~/.stash/; done
-echo "CFLAGS = $CFLAGS -march=skylake-avx512 -ftree-vectorize " > ~/.R/Makevars
-echo "FFLAGS = $FFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
-echo "CXXFLAGS = $CXXFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
-R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library quadprog
-for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx512 ; mv $i.avx512 ~/.stash/; done
 echo "CFLAGS = $CFLAGS -ftree-vectorize " > ~/.R/Makevars
 echo "FFLAGS = $FFLAGS -ftree-vectorize " >> ~/.R/Makevars
 echo "CXXFLAGS = $CXXFLAGS -ftree-vectorize " >> ~/.R/Makevars
@@ -105,4 +97,3 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/quadprog/libs/quadprog.so
 /usr/lib64/R/library/quadprog/libs/quadprog.so.avx2
-/usr/lib64/R/library/quadprog/libs/quadprog.so.avx512
