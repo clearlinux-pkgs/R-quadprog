@@ -4,7 +4,7 @@
 #
 Name     : R-quadprog
 Version  : 1.5.5
-Release  : 11
+Release  : 12
 URL      : https://cran.r-project.org/src/contrib/quadprog_1.5-5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/quadprog_1.5-5.tar.gz
 Summary  : Functions to solve Quadratic Programming Problems.
@@ -32,11 +32,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1502414464
+export SOURCE_DATE_EPOCH=1502417600
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1502414464
+export SOURCE_DATE_EPOCH=1502417600
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
