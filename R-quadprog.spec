@@ -4,7 +4,7 @@
 #
 Name     : R-quadprog
 Version  : 1.5.7
-Release  : 37
+Release  : 38
 URL      : https://cran.r-project.org/src/contrib/quadprog_1.5-7.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/quadprog_1.5-7.tar.gz
 Summary  : Functions to Solve Quadratic Programming Problems
