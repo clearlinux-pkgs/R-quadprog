@@ -1,7 +1,7 @@
 # This file contains recursive sources that require this package
 R-BB
 R-PerformanceAnalytics
-R-clue
 R-flexsurv
+R-lavaan
 R-phangorn
 R-tseries
